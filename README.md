@@ -2,6 +2,8 @@
 
 A slash-command style website cloning workflow for Claude Code / Claude Desktop command setups.
 
+![Claude clone skill screenshot](assets/clone-screenshot.png)
+
 This package keeps the cloning pipeline in one shared context while strengthening the inputs:
 
 - full raw HTML
