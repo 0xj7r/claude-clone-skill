@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate shell scripts
+        run: |
+          bash -n install.sh
+          bash -n commands/clone-setup.sh
+          bash -n commands/extract-css.sh
+          bash -n commands/smart-strip.sh
+
+      - name: Dry-run installer
+        run: |
+          export HOME="$(mktemp -d)"
+          bash install.sh
+          test -f "$HOME/.claude/commands/clone.md"
+          test -x "$HOME/.claude/commands/clone-setup.sh"
+          test -x "$HOME/.claude/commands/extract-css.sh"
+          test -x "$HOME/.claude/commands/smart-strip.sh"

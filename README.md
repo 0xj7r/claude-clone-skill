@@ -20,7 +20,13 @@ This package keeps the cloning pipeline in one shared context while strengthenin
 
 ## Install
 
-Copy the files into your Claude commands directory:
+Use the installer:
+
+```bash
+bash install.sh
+```
+
+Or copy the files into your Claude commands directory manually:
 
 ```bash
 mkdir -p ~/.claude/commands
@@ -54,6 +60,17 @@ npx firecrawl-cli login --browser
 /clone https://example.com my-project --skip-scaffold
 /clone --from-existing ~/proj-example
 ```
+
+## QA Prompt
+
+The repository includes a reusable QA prompt at `prompts/qa-review-prompt.md` for screenshot-based fix iterations after the initial build.
+
+## CI
+
+GitHub Actions runs a minimal sanity check on every push and pull request:
+
+- shell syntax validation for the helper scripts
+- installer dry run against a temporary `HOME`
 
 ## Design
 
